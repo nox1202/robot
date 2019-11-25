@@ -14,7 +14,7 @@ from utils import *
 slim = tf.contrib.slim
 
 HEIGHT, WIDTH, CHANNEL = 128, 128, 3
-BATCH_SIZE = 8
+BATCH_SIZE = 64
 EPOCH = 5000
 version = 'newJewellery'
 newJewel_path = './' + version
@@ -247,7 +247,7 @@ def train():
             imgtest = sess.run(fake_image, feed_dict={random_input: sample_noise, is_train: False})
             # imgtest = imgtest * 255.0
             # imgtest.astype(np.uint8)
-            save_images(imgtest, [8,8] ,newJewel_path + '/epoch' + str(i) + '.jpg')
+            save_images(imgtest, [32,32] ,newJewel_path + '/epoch' + str(i) + '.jpg')
             
             print('train:[%d],d_loss:%f,g_loss:%f' % (i, dLoss, gLoss))
     coord.request_stop()
